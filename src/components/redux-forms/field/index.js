@@ -1,5 +1,5 @@
 import React from 'react';
-import CloseIcon from "../../../assets/images/close-icon.svg";
+import CloseIcon from "../../../assets/images/pufy.png";
 
 export const renderField = ({ input, placeholder, label, styleInput, type, classInput, toastError, imgError, meta: { touched, error } }) => (
   <div className={`field ${classInput} ${error && touched && 'field--error'}`}>
