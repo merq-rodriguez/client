@@ -1,0 +1,14 @@
+.bck-gray-deg {
+    min-height: 100vh; // background: linear-gradient(180deg, #FFFFFF 0%, rgba(246, 246, 246, 0.73) 68.51%, #E5E5E5 100%); // filter: blur(15px);
+    background: url('../../assets/images/background-poligon.svg')
+}
+
+.btn-fb-blue {
+    color: white;
+    background: #7088DE;
+    border-radius: 100px;
+    font-weight: bold;
+    letter-spacing: 0.001em;
+    text-transform: uppercase;
+    border: none;
+}
