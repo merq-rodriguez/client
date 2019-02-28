@@ -15,18 +15,18 @@ body {
   margin: 0;
 }
 
-body {
+.container-signup {
   margin-left: 33.33%;
   margin-right: 33.33%;
 }
-body header {
+.container-signup header {
   padding-top: 30px;
 }
-body header img {
+.container-signup header img {
   display: block;
   margin: auto;
 }
-body section h3 {
+.container-signup section h3 {
   color: #676767;
   font-family: "PingFang";
   font-weight: 500;
@@ -34,7 +34,7 @@ body section h3 {
   padding-bottom: 5px;
   text-align: center;
 }
-body section form input {
+.container-signup section form input {
   border: 1px solid #ccc;
   border-radius: 4px;
   display: inline-block;
@@ -46,31 +46,31 @@ body section form input {
   width: 100%;
   background-color: #fff;
 }
-body section form .rd {
+.container-signup section form .rd {
   margin-top: 25px;
   display: flex;
 }
-body section form .rd input[type="radio"] {
+.container-signup section form .rd input[type="radio"] {
   margin-left: 20px;
   width: 40px;
   height: auto;
   font-size: 70px;
 }
-body section form .rd label {
+.container-signup section form .rd label {
   color: #a2a2a2;
   font-size: 14px;
   text-align: justify;
   margin-right: 21px;
 }
-body section form p {
+.container-signup section form p {
   font-size: 15.5px;
   padding-left: 21px;
   padding-right: 21px;
 }
-body section form p.term {
+.container-signup section form p.term {
   text-align: center;
 }
-body section form button {
+.container-signup section form button {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 30px;
@@ -83,6 +83,6 @@ body section form button {
   margin: auto;
   width: 90%;
 }
-body section form button:hover {
+.container-signup section form button:hover {
   cursor: pointer;
 } /*# sourceMappingURL=sign_in.css.map */
