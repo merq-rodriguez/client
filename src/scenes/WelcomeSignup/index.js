@@ -1,37 +1,55 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import pufy from '../../assets/images/pufy.png'
 import './styles.scss';
-import { reset } from 'redux-form';
-import LoginForm from '../../components/redux-forms/login';
-import SignupForm from '../../components/redux-forms/signup';
-import { loginAction, signupAction } from '../../services/auth/actions';
-import { Button } from 'reactstrap';
-
-import { FaTint } from "react-icons/fa";
 
 
 class WelcomeSignup extends React.Component {
 
   state = {  };
-  constructor(props){
-    super(props);
-  }
-
-  changeIsCollapsed = (state) => this.setState({ isCollapsed: state });
 
   render() {
-    const { isCollapsed, email } = this.state;
-
-    if(this.props.auth.reset_form_signup && this.state.isCollapsed !== 'collapsed'){
-      this.setState({ isCollapsed: 'collapsed' });
-      this.props.reset('signup');
-    }
+  return (
     
-    return (
-      <div className="p-relative">  
-          <h1>SignUP :3</h1>
-      </div>
+    <div>
+       <header>
+        <img src={pufy}/> 
+      </header>
+      
+     
+    <section>
+        <h3>Registra tu dirección de email</h3>
+        <form>
+            <input type="email" placeholder="Email" name=""/>
+            <input type="email" placeholder="Confirmar email" name=""/>
+            <input type="text" placeholder="Nombre" name=""/>
+            <input type="password" placeholder="Contraseña" name=""/>
+
+            <div className="rd">
+
+                <input type="radio" value="" id="rd" name=""/>
+
+                <label for="rd">
+                    Compatir mis datos de registro con los proveedores de contenido de Pufy para fines de Marketing
+                </label>
+
+            </div>
+            <br/>
+             <p className="term">
+                Al hacer click en registrarce acepta los
+                <a href="">Términos y Condiciones</a> de Uso de Pufy
+            </p>
+            <button>REGISTRATE</button>
+            <p className="term">
+                ¿Ya tienes una cuenta?
+                <a href="#">Iniciar sesión</a>
+            </p> 
+        </form>
+    </section>
+    <footer></footer> 
+      
+    </div>
+    
     );
   }
 
@@ -41,22 +59,6 @@ class WelcomeSignup extends React.Component {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-      auth: state.auth
-  }
-};
-
-const mapDispatchToProps = {
-  loginAction,
-  signupAction,
-  reset
-};
-
-WelcomeSignup = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  )(WelcomeSignup);
   
 export default WelcomeSignup;
 
