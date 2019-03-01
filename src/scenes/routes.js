@@ -20,6 +20,7 @@ import Signup from './Signup';
 import Onboarding from './Onboarding';
 import PayModule from '../components/pay-module';
 import Landingpage from './Landingpage';
+import Welcome from './Welcome';
 
 class Routes extends React.Component {
 
@@ -39,6 +40,7 @@ class Routes extends React.Component {
 						<Route exact path="/" component={ Landingpage } />
 						<RouteAuth path="/login"      redirect="/dashboard" component={Login} 		  auth={true}/>
 						<RouteAuth path="/signup"     redirect="/dashboard" component={Signup} auth={true}/>
+						<RouteAuth path="/welcome"    redirect="/login"     component={Welcome} auth={true}/>						
 						<RouteAuth path="/dashboard"  redirect="/login" 	component={Dashboard} 	  auth={true}/>
 						<RouteAuth path="/event"      redirect="/login" 	component={Event} 		  auth={true}/>
 						<RouteAuth path="/catalog"    redirect="/login" 	component={Catalog} 	  auth={true}/>
