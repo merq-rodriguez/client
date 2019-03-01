@@ -16,7 +16,7 @@ import Event from './Event'
 import Mapa from './Mapa'
 import Catalog from './Catalog'
 import Player from './Player'
-import WelcomeSignup from './WelcomeSignup';
+import Signup from './Signup';
 import Onboarding from './Onboarding';
 import PayModule from '../components/pay-module';
 import Landingpage from './Landingpage';
@@ -38,7 +38,7 @@ class Routes extends React.Component {
 					<Switch className="h-100">
 						<Route exact path="/" component={ Landingpage } />
 						<RouteAuth path="/login"      redirect="/dashboard" component={Login} 		  auth={true}/>
-						<RouteAuth path="/signup"     redirect="/dashboard" component={WelcomeSignup} auth={true}/>
+						<RouteAuth path="/signup"     redirect="/dashboard" component={Signup} auth={true}/>
 						<RouteAuth path="/dashboard"  redirect="/login" 	component={Dashboard} 	  auth={true}/>
 						<RouteAuth path="/event"      redirect="/login" 	component={Event} 		  auth={true}/>
 						<RouteAuth path="/catalog"    redirect="/login" 	component={Catalog} 	  auth={true}/>

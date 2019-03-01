@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import pufy from "../../assets/images/pufy.png";
 import "./styles.scss";
 
-class WelcomeSignup extends React.Component {
+class Signup extends React.Component {
   state = {
     err: false,
     message: "",
@@ -131,4 +131,4 @@ class WelcomeSignup extends React.Component {
   };
 }
 
-export default WelcomeSignup;
+export default Signup;
