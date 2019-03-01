@@ -1,114 +1,134 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import pufy from '../../assets/images/pufy.png'
-import './styles.scss';
-
+import React from "react";
+import { connect } from "react-redux";
+import pufy from "../../assets/images/pufy.png";
+import "./styles.scss";
 
 class WelcomeSignup extends React.Component {
-
-  state = { 
+  state = {
     err: false,
-    message: '',
+    message: "",
     user: {}
   };
 
-  emailRef =        React.createRef();
+  emailRef = React.createRef();
   emialConfirmRef = React.createRef();
-  nameRef =         React.createRef();
-  passwordRef =     React.createRef();
+  nameRef = React.createRef();
+  passwordRef = React.createRef();
 
-
-  validateEmptyField(){
-    if(this.state.user.email === '' || this.state.user.name === '' || this.state.user.password === '' ){
-      this.setState({ err: true,  message: '* Ingrese los campos obligatorios' })
-    }else{
-      this.setState({ err: true,  message: ''})
+  validateFields() {
+    if (
+      !this.state.user.email  ||
+      !this.state.user.name       ||
+      !this.state.user.password  ||
+      this.state.user.email.trim()    === ''  ||
+      this.state.user.name.trim()     === ''  ||
+      this.state.user.password.trim() === ''
+      ) {
+      console.log(this.state.user)
+      console.log("* Ingrese los campos obligatorios");
+      this.setState({
+        err: true,
+        message: "* Ingrese los campos obligatorios"
+      });
+    } else {
+      //this.setState({ err: false, message: "" });
+      this.validateEmail();
     }
+  }
+
+  validateEmail() {
+    
+      if (this.state.user.email !== this.emialConfirmRef.current.value) {
+        this.setState({ err: true, message: "* El email no coincide" });
+      } else {
+        this.setState({ err: true, message: "" });
+      }
+    
+  
   }
 
   signUp = (e) => {
     e.preventDefault();
-
     const dataUser = {
       email: this.emailRef.current.value,
       name: this.nameRef.current.value,
       password: this.passwordRef.current.value
-    }
+    };
 
     this.setState({
-       data: dataUser 
-    })
-
-    this.validateEmptyField();
-
-/* 
-    if(dataUser.email === '' || dataUser.name === '' || dataUser.password === '' ){
-      this.setState({
-         err: true, 
-         message: 'Ingrese los campos obligatorios'
-      })
-    }else{
-      if(dataUser.email !== this.emialConfirmRef.current.value){
-        console.log("Verifique que coincida el email")
-        this.setState({ err: true })
-      }
-      this.setState({ err: false })
-    } */
-    console.log(dataUser);
-  }
+      user: dataUser
+    });
+    this.validateFields();
+  };
 
   render() {
-  return (
-    
-    <div  className="container-signup"> 
-       <header>
-        <img src={pufy}/> 
-      </header>
-      
-     
-    <section>
-        <h3>Registra tu dirección de email</h3>
-        <form onSubmit={this.signUp}>
-            <input type="email"  placeholder="Email" name="" ref={this.emailRef} />
-            <p> * Campos obligatorios</p>
-            <input type="email" placeholder="Confirmar email" ref={this.emialConfirmRef} name=""/>
-            <input type="text" placeholder="Nombre"  ref={this.nameRef} name=""/>
-            <input type="password" placeholder="Contraseña" ref={this.passwordRef} name=""/>
+    const { history } = this.props;
+    return (
+      <div className="container-signup">
+        <header>
+          <img src={pufy} />
+        </header>
 
+        <section>
+          <h3>Registra tu dirección de email</h3>
+          <form onSubmit={this.signUp}>
+            <input
+              type="email"
+              placeholder="Email"
+              name=""
+              ref={this.emailRef}
+            />
+
+            <input
+              type="email"
+              placeholder="Confirmar email"
+              ref={this.emialConfirmRef}
+              name=""
+            />
+            <input
+              type="text"
+              placeholder="Nombre"
+              ref={this.nameRef}
+              name=""
+            />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              ref={this.passwordRef}
+              name=""
+            />
+            {this.state.err ? <p> {this.state.message} </p> : ""}
             <div className="rd">
-            { this.state.err ? <p> Error </p> : '' }
-                <input type="radio" value="" id="rd" name=""/>
+              <input type="radio" value="" id="rd" name="" />
 
-                <label>
-                    Compatir mis datos de registro con los proveedores de contenido de Pufy para fines de Marketing
-                </label>
-
+              <label>
+                Compatir mis datos de registro con los proveedores de contenido
+                de Pufy para fines de Marketing
+              </label>
             </div>
-            <br/>
-             <p className="term">
-                Al hacer click en registrarce acepta los
-                <a href="">Términos y Condiciones</a> de Uso de Pufy
+            <br />
+            <p className="term">
+              Al hacer click en registrarce acepta los
+              <a href=""> Términos y Condiciones </a> de uso de Pufy
             </p>
             <button>REGISTRATE</button>
             <p className="term">
-                ¿Ya tienes una cuenta?
-                <a href="#">Iniciar sesión</a>
-            </p> 
-        </form>
-    </section>
-    <footer></footer> 
-      
-    </div>
-    
+              ¿Ya tienes una cuenta? 
+              <a href="#" onClick={() => history.push("/login")}>
+                 Iniciar sesión
+              </a>
+            </p>
+          </form>
+        </section>
+        <footer />
+      </div>
     );
   }
 
-  onSignupPress = (data) => { 
+  onSignupPress = data => {
     this.setState({ email: data.correo });
-    this.props.signupAction(data); 
-  }
-};
+    this.props.signupAction(data);
+  };
+}
 
-  
 export default WelcomeSignup;
-
